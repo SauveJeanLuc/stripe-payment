@@ -19,7 +19,6 @@ public class PhoneNumberValidatorTest {
     }
 
     @ParameterizedTest
-    //Pass Actual input and Expected Value
     @CsvSource({
             "+250798000000 , true",
             "+25079800000078913, false",
@@ -30,42 +29,5 @@ public class PhoneNumberValidatorTest {
         assertThat(isValid).isEqualTo(expected);
     }
 
-    @Test
-    void itShouldValidatePhoneNumber(){
-        //Given
-        String phoneNumber = "+250798000000";
-
-        //When
-        boolean isValid = underTest.test(phoneNumber);
-
-        //Then
-        assertThat(isValid).isTrue();
-    }
-
-    @Test
-    @DisplayName("Should fail when length is Bigger Than 13")
-    void itShouldValidatePhoneNumberWhenIncorrectAndHasLengthBiggerThan13(){
-        //Given
-        String phoneNumber = "+25079800000078913";
-
-        //When
-        boolean isValid = underTest.test(phoneNumber);
-
-        //Then
-        assertThat(isValid).isFalse();
-    }
-
-    @Test
-    @DisplayName("Should fail when does not start with plus sign")
-    void itShouldValidatePhoneNumberWhenDoesNotStartWithPlusSign(){
-        //Given
-        String phoneNumber = "250798000000789";
-
-        //When
-        boolean isValid = underTest.test(phoneNumber);
-
-        //Then
-        assertThat(isValid).isFalse();
-    }
 
 }
