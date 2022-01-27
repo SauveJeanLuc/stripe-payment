@@ -31,13 +31,26 @@ public class PhoneNumberValidatorTest {
     @DisplayName("Should fail when length is Bigger Than 13")
     void itShouldValidatePhoneNumberWhenIncorrectAndHasLengthBiggerThan13(){
         //Given
-        String phoneNumber = "+250798000000789";
+        String phoneNumber = "+25079800000078913";
 
         //When
         boolean isValid = underTest.test(phoneNumber);
 
         //Then
-        assertThat(isValid).isTrue();
+        assertThat(isValid).isFalse();
+    }
+
+    @Test
+    @DisplayName("Should fail when does not start with plus sign")
+    void itShouldValidatePhoneNumberWhenDoesNotStartWithPlusSign(){
+        //Given
+        String phoneNumber = "250798000000789";
+
+        //When
+        boolean isValid = underTest.test(phoneNumber);
+
+        //Then
+        assertThat(isValid).isFalse();
     }
 
 }
